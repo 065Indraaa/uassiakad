@@ -1,44 +1,50 @@
-import * as React from 'react';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
+import React from 'react';
+import { ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
+import { Link } from 'react-router-dom';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PeopleIcon from '@mui/icons-material/People';
 import SchoolIcon from '@mui/icons-material/School';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 export const mainListItems = (
   <React.Fragment>
-    <ListItemButton component="a" href="/">
+    <ListItemButton component={Link} to="/">
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
       <ListItemText primary="Dashboard" />
     </ListItemButton>
-    <ListItemButton component="a" href="/students">
+    <ListItemButton component={Link} to="/students">
       <ListItemIcon>
         <PeopleIcon />
       </ListItemIcon>
       <ListItemText primary="Students" />
     </ListItemButton>
-    <ListItemButton component="a" href="/teachers">
+    <ListItemButton component={Link} to="/teachers">
       <ListItemIcon>
         <SchoolIcon />
       </ListItemIcon>
       <ListItemText primary="Teachers" />
     </ListItemButton>
-    <ListItemButton component="a" href="/grades">
+    <ListItemButton component={Link} to="/grades">
       <ListItemIcon>
         <BarChartIcon />
       </ListItemIcon>
       <ListItemText primary="Grades" />
     </ListItemButton>
-    <ListItemButton component="a" href="/schedule">
+    <ListItemButton component={Link} to="/schedule">
       <ListItemIcon>
         <CalendarTodayIcon />
       </ListItemIcon>
       <ListItemText primary="Schedule" />
+    </ListItemButton>
+    <ListItemButton component={Link} to="/profile">
+      <ListItemIcon>
+        <AccountCircleIcon />
+      </ListItemIcon>
+      <ListItemText primary="Profile" />
     </ListItemButton>
   </React.Fragment>
 );
