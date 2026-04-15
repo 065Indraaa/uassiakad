@@ -25,7 +25,7 @@ const Schedule = () => {
     };
     getSchedule();
     getTeachers();
-  }, []);
+  }, [scheduleCollectionRef, teachersCollectionRef]);
 
   const handleClickOpen = (scheduleItem) => {
     if (scheduleItem) {
@@ -45,7 +45,8 @@ const Schedule = () => {
   const handleSave = async () => {
     if (isEditing) {
       const scheduleDoc = doc(db, 'schedule', currentSchedule.id);
-      const { id, ...scheduleData } = currentSchedule;
+      const scheduleData = { ...currentSchedule };
+      delete scheduleData.id;
       await updateDoc(scheduleDoc, scheduleData);
     } else {
       await addDoc(scheduleCollectionRef, currentSchedule);
