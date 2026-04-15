@@ -15,9 +15,15 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { mainListItems } from './listItems';
+import { MainListItems } from './listItems';
+import { useAuth } from '../contexts/AuthContext';
 
 const drawerWidth = 240;
+
+const AppBar = styled(MuiAppBar, {
+// ...
+// ... I will use multiple ReplaceChunks to do it cleaner or just re-write the top.
+// Wait, I can use multi_replace_file_content for this.
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',

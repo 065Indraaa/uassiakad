@@ -1,0 +1,2208 @@
+
+
+
+
+
+
+PRODUCT REQUIREMENTS DOCUMENT (PRD)
+
+Sistem Informasi Akademik (SIAKAD)
+
+Sekolah Menengah Atas Terintegrasi
+
+
+
+
+
+Versi 1.0  |  April 2025  |  Kelompok 3
+
+
+
+
+
+Nama
+
+NIM
+
+Indra Bachtiar Zakaria
+
+24050974065
+
+Yusuf Ramadhan Morti Sondang Simanjuntak
+
+24050974067
+
+Ericha Okti Virlya Meyjie
+
+24050974072
+
+Rina Dwi Apri Lestari
+
+24050974076
+
+Muhamad Syamil Atillah
+
+24050974077
+
+
+
+
+
+Jurusan Teknik Informatika  |  Fakultas Teknik  |  Universitas Negeri Surabaya
+
+
+
+1. Ringkasan Eksekutif
+
+SIAKAD SMA adalah sistem informasi akademik berbasis web yang dirancang untuk mendigitalisasi dan mengintegrasikan seluruh proses pengelolaan data akademik di Sekolah Menengah Atas. Sistem ini menggantikan proses manual seperti pencatatan nilai di Microsoft Excel, pembagian kelas, dan pengelolaan data alumni yang tersebar, menjadi satu platform digital yang terpadu.
+
+
+
+Sistem mendukung tiga peran pengguna utama yaitu Admin, Guru, dan Siswa, serta menyediakan landing page publik yang dapat diakses tanpa autentikasi. Fitur unggulan sistem mencakup manajemen nilai, pembagian kelas otomatis, penjurusan digital, pencatatan prestasi, pengelolaan alumni, dan chatbot berbasis AI untuk layanan informasi.
+
+
+
+2. Latar Belakang & Permasalahan
+
+2.1 Permasalahan yang Diidentifikasi
+
+Pencatatan nilai siswa masih dilakukan secara manual menggunakan Microsoft Excel, rentan terhadap kesalahan dan sulit dipantau secara real-time.
+
+Pembagian kelas dan penjurusan tidak memiliki sistem digital yang transparan dan terstandarisasi.
+
+Data alumni tidak terintegrasi dan tersebar di berbagai media sehingga sulit diakses.
+
+Tidak ada satu portal terpusat bagi siswa untuk memantau jadwal, nilai, dan informasi akademik.
+
+Proses administrasi akun pengguna (guru dan siswa) dilakukan secara manual tanpa sistem persetujuan terstruktur.
+
+
+
+2.2 Solusi yang Diusulkan
+
+Membangun platform web SIAKAD yang mengintegrasikan seluruh kebutuhan akademik sekolah dalam satu sistem dengan tiga level akses (Admin, Guru, Siswa) dan antarmuka publik yang informatif.
+
+
+
+3. Tujuan & Sasaran Produk
+
+3.1 Tujuan Utama
+
+Digitalisasi pengelolaan data akademik siswa dan guru secara terpusat.
+
+Otomatisasi proses pembagian kelas dan penjurusan berdasarkan kriteria yang terstandarisasi.
+
+Penyediaan portal informasi publik dan personal untuk seluruh pemangku kepentingan.
+
+Pengelolaan data alumni yang terstruktur dan mudah diakses.
+
+Peningkatan layanan informasi melalui chatbot berbasis AI.
+
+
+
+3.2 Metrik Keberhasilan
+
+Metrik
+
+Target
+
+Cara Ukur
+
+Waktu input nilai
+
+< 5 menit per kelas
+
+User testing
+
+Akurasi pembagian kelas
+
+100% sesuai kriteria
+
+Verifikasi data
+
+Uptime sistem
+
+> 99%
+
+Monitoring Firebase
+
+Kepuasan pengguna (usability)
+
+> 80% positif
+
+Survei SUS
+
+Waktu respons chatbot
+
+< 3 detik
+
+Performance test
+
+
+
+
+
+4. Ruang Lingkup Sistem
+
+4.1 Dalam Ruang Lingkup (In Scope)
+
+Autentikasi multi-peran (Admin, Guru, Siswa)
+
+Manajemen akun pengguna oleh Admin
+
+Pengelolaan data siswa, guru, dan kelas
+
+Input dan manajemen nilai siswa oleh Guru
+
+Pencatatan prestasi akademik dan non-akademik
+
+Pembagian kelas otomatis untuk siswa kelas 10
+
+Penjurusan digital untuk siswa kelas 11
+
+Pengelolaan data alumni
+
+Dashboard personal per peran pengguna
+
+Landing page publik
+
+Chatbot AI berbasis FAQ sistem
+
+
+
+4.2 Di Luar Ruang Lingkup (Out of Scope)
+
+Sistem pembayaran SPP / keuangan sekolah
+
+Aplikasi mobile native (iOS/Android)
+
+Integrasi dengan sistem Dinas Pendidikan eksternal
+
+Fitur video conference atau e-learning
+
+
+
+
+
+5. Pengguna Sistem (User Personas)
+
+5.1 Admin
+
+Admin adalah staf tata usaha atau operator sekolah yang bertanggung jawab atas seluruh pengelolaan data sistem.
+
+Atribut
+
+Detail
+
+Login
+
+Username + Password
+
+Akses
+
+Full access ke semua data dan pengaturan sistem
+
+Tanggung Jawab
+
+Kelola akun, data siswa/guru, kelas, alumni, penjurusan
+
+Kebutuhan Utama
+
+Dashboard ringkasan, notifikasi persetujuan akun baru
+
+
+
+5.2 Guru
+
+Guru adalah tenaga pengajar yang menggunakan sistem untuk mengelola nilai dan prestasi siswa.
+
+Atribut
+
+Detail
+
+Login
+
+NIP + Password
+
+Akses
+
+Input nilai, catat prestasi siswa, lihat data kelas
+
+Tanggung Jawab
+
+Input nilai per mata pelajaran, rekap prestasi siswa
+
+Kebutuhan Utama
+
+Form input nilai yang cepat, daftar siswa per kelas
+
+
+
+5.3 Siswa
+
+Siswa adalah pengguna akhir yang memantau perkembangan akademik pribadinya.
+
+Atribut
+
+Detail
+
+Login
+
+NISN + Password
+
+Akses
+
+Lihat nilai, jadwal, prestasi, profil, chatbot
+
+Tanggung Jawab
+
+Memperbarui data profil jika diperlukan
+
+Kebutuhan Utama
+
+Dashboard informatif, mudah diakses di perangkat apapun
+
+
+
+5.4 Pengunjung Publik
+
+Masyarakat umum yang mengakses landing page untuk mendapatkan informasi sekolah tanpa perlu login.
+
+
+
+
+
+6. Desain Database
+
+Sistem menggunakan Firebase Firestore (NoSQL, cloud-based). Berikut adalah struktur koleksi/tabel utama:
+
+
+
+6.1 Tabel Siswa
+
+Field
+
+Tipe Data
+
+Keterangan
+
+id_siswa
+
+String (auto)
+
+Primary key (Firebase doc ID)
+
+nis
+
+String
+
+Nomor Induk Siswa (unik)
+
+nisn
+
+String
+
+NISN untuk login (unik)
+
+nama
+
+String
+
+Nama lengkap siswa
+
+ttl_tempat
+
+String
+
+Tempat lahir
+
+ttl_tanggal
+
+Timestamp
+
+Tanggal lahir
+
+jenis_kelamin
+
+String
+
+L / P
+
+jurusan
+
+String
+
+Rumpun A/B/C atau kosong (kelas 10)
+
+id_kelas
+
+String (FK)
+
+Referensi ke tabel kelas
+
+alamat
+
+String
+
+Alamat lengkap
+
+no_telp
+
+String
+
+Nomor telepon
+
+email
+
+String
+
+Email siswa
+
+password_hash
+
+String
+
+Hash password login
+
+status_akun
+
+String
+
+aktif / menunggu / nonaktif
+
+created_at
+
+Timestamp
+
+Tanggal dibuat
+
+updated_at
+
+Timestamp
+
+Tanggal diperbarui
+
+
+
+6.2 Tabel Guru
+
+Field
+
+Tipe Data
+
+Keterangan
+
+id_guru
+
+String (auto)
+
+Primary key
+
+nip
+
+String
+
+NIP untuk login (unik)
+
+nama
+
+String
+
+Nama lengkap guru
+
+ttl_tempat
+
+String
+
+Tempat lahir
+
+ttl_tanggal
+
+Timestamp
+
+Tanggal lahir
+
+jenis_kelamin
+
+String
+
+L / P
+
+jabatan
+
+String
+
+Wali kelas / Guru Mapel / Kepala Sekolah
+
+no_telp
+
+String
+
+Nomor telepon
+
+email
+
+String
+
+Email guru
+
+password_hash
+
+String
+
+Hash password login
+
+status_akun
+
+String
+
+aktif / menunggu / nonaktif
+
+created_at
+
+Timestamp
+
+Tanggal dibuat
+
+updated_at
+
+Timestamp
+
+Tanggal diperbarui
+
+
+
+6.3 Tabel Kelas
+
+Field
+
+Tipe Data
+
+Keterangan
+
+id_kelas
+
+String (auto)
+
+Primary key
+
+nama_kelas
+
+String
+
+Contoh: X-A, XI-IPA-1, XII-IPS-2
+
+tingkat
+
+String
+
+10 / 11 / 12
+
+nip_wali_kelas
+
+String (FK)
+
+NIP wali kelas (ref ke tabel guru)
+
+tahun_ajaran
+
+String
+
+Contoh: 2024/2025
+
+created_at
+
+Timestamp
+
+Tanggal dibuat
+
+
+
+6.4 Tabel Nilai
+
+Field
+
+Tipe Data
+
+Keterangan
+
+id_nilai
+
+String (auto)
+
+Primary key
+
+nis
+
+String (FK)
+
+Referensi ke siswa
+
+nip_guru
+
+String (FK)
+
+Referensi ke guru yang menginput
+
+id_kelas
+
+String (FK)
+
+Referensi ke kelas
+
+mata_pelajaran
+
+String
+
+Nama mata pelajaran
+
+semester
+
+String
+
+Ganjil / Genap
+
+tahun_ajaran
+
+String
+
+Contoh: 2024/2025
+
+nilai_harian
+
+Number
+
+Rata-rata nilai harian
+
+nilai_uts
+
+Number
+
+Nilai Ujian Tengah Semester
+
+nilai_uas
+
+Number
+
+Nilai Ujian Akhir Semester
+
+nilai_akhir
+
+Number
+
+Nilai akhir (kalkulasi otomatis)
+
+created_at
+
+Timestamp
+
+Tanggal dibuat
+
+updated_at
+
+Timestamp
+
+Tanggal diperbarui
+
+
+
+6.5 Tabel Alumni
+
+Field
+
+Tipe Data
+
+Keterangan
+
+id_alumni
+
+String (auto)
+
+Primary key
+
+nis
+
+String
+
+NIS saat bersekolah
+
+nama
+
+String
+
+Nama lengkap alumni
+
+tahun_lulus
+
+Number
+
+Tahun kelulusan
+
+status_sekarang
+
+String
+
+kuliah / kerja / lainnya
+
+nama_institusi
+
+String
+
+Nama PT / perusahaan / institusi
+
+jabatan_jurusan
+
+String
+
+Jabatan (kerja) atau program studi (kuliah)
+
+email
+
+String
+
+Email aktif alumni
+
+no_telp
+
+String
+
+Nomor telepon alumni
+
+alamat_domisili
+
+String
+
+Alamat tinggal sekarang
+
+prestasi_alumni
+
+String/Array
+
+Daftar prestasi setelah lulus
+
+created_at
+
+Timestamp
+
+Tanggal dibuat
+
+updated_at
+
+Timestamp
+
+Tanggal diperbarui
+
+
+
+6.6 Tabel Prestasi Siswa
+
+Field
+
+Tipe Data
+
+Keterangan
+
+id_prestasi
+
+String (auto)
+
+Primary key
+
+nis
+
+String (FK)
+
+Referensi ke siswa
+
+nip_guru
+
+String (FK)
+
+Guru yang mencatat
+
+jenis
+
+String
+
+akademik / non-akademik
+
+nama_prestasi
+
+String
+
+Nama kejuaraan / kegiatan
+
+tingkat
+
+String
+
+Sekolah / Kota / Provinsi / Nasional / Internasional
+
+peringkat
+
+String
+
+Juara 1, 2, 3, atau Peserta
+
+tanggal
+
+Timestamp
+
+Tanggal prestasi diraih
+
+keterangan
+
+String
+
+Deskripsi tambahan
+
+created_at
+
+Timestamp
+
+Tanggal dibuat
+
+
+
+6.7 Tabel Penjurusan
+
+Field
+
+Tipe Data
+
+Keterangan
+
+id_penjurusan
+
+String (auto)
+
+Primary key
+
+nis
+
+String (FK)
+
+Referensi ke siswa kelas 11
+
+minat_pilihan
+
+String
+
+Rumpun yang dipilih siswa
+
+rumpun_ditetapkan
+
+String
+
+Rumpun A / B / C
+
+dasar_penetapan
+
+String
+
+Kriteria: nilai + minat + bakat
+
+tahun_ajaran
+
+String
+
+Tahun penjurusan
+
+disetujui_oleh
+
+String (FK)
+
+NIP admin yang menyetujui
+
+created_at
+
+Timestamp
+
+Tanggal dibuat
+
+
+
+6.8 Tabel Pembagian Kelas (Kelas 10)
+
+Field
+
+Tipe Data
+
+Keterangan
+
+id_pembagian
+
+String (auto)
+
+Primary key
+
+nis
+
+String (FK)
+
+Referensi ke siswa kelas 10
+
+nilai_tes_masuk
+
+Number
+
+Nilai ujian masuk sekolah
+
+nilai_rapor_smp
+
+Number
+
+Nilai rapor dari SMP
+
+id_kelas_ditetapkan
+
+String (FK)
+
+Kelas yang ditetapkan
+
+tahun_ajaran
+
+String
+
+Tahun pembagian
+
+diproses_oleh
+
+String (FK)
+
+NIP admin yang memproses
+
+created_at
+
+Timestamp
+
+Tanggal dibuat
+
+
+
+
+
+7. Kebutuhan Fungsional
+
+7.1 Modul Autentikasi
+
+ID
+
+Fitur
+
+Aktor
+
+Deskripsi
+
+AUTH-01
+
+Login Admin
+
+Admin
+
+Login menggunakan username dan password
+
+AUTH-02
+
+Login Guru
+
+Guru
+
+Login menggunakan NIP dan password
+
+AUTH-03
+
+Login Siswa
+
+Siswa
+
+Login menggunakan NISN dan password
+
+AUTH-04
+
+Logout
+
+Semua
+
+Sesi diakhiri dan token dihapus
+
+AUTH-05
+
+Reset Password
+
+Admin
+
+Admin dapat mereset password pengguna
+
+
+
+7.2 Modul Manajemen Pengguna (Admin)
+
+ID
+
+Fitur
+
+Deskripsi
+
+USR-01
+
+Tambah Akun Guru
+
+Admin membuat akun baru untuk guru dengan mengisi form data guru
+
+USR-02
+
+Setujui Akun
+
+Admin menyetujui akun yang berstatus 'menunggu' menjadi aktif
+
+USR-03
+
+Nonaktifkan Akun
+
+Admin dapat menonaktifkan akun guru atau siswa
+
+USR-04
+
+Hapus Akun
+
+Admin dapat menghapus akun dari sistem (soft delete)
+
+USR-05
+
+Daftar Pengguna
+
+Admin dapat melihat daftar semua guru dan siswa beserta statusnya
+
+USR-06
+
+Edit Data Guru
+
+Admin mengedit data profil guru
+
+USR-07
+
+Edit Data Siswa
+
+Admin mengedit data profil siswa
+
+
+
+7.3 Modul Data Siswa
+
+ID
+
+Fitur
+
+Aktor
+
+Deskripsi
+
+SIS-01
+
+Input Data Siswa
+
+Admin
+
+Menambahkan data siswa baru ke sistem
+
+SIS-02
+
+Edit Data Siswa
+
+Admin
+
+Mengubah informasi siswa yang sudah ada
+
+SIS-03
+
+Lihat Profil Siswa
+
+Admin/Guru
+
+Melihat detail profil siswa tertentu
+
+SIS-04
+
+Lihat Profil Sendiri
+
+Siswa
+
+Siswa melihat profil akademiknya sendiri
+
+SIS-05
+
+Cari Siswa
+
+Admin/Guru
+
+Pencarian siswa berdasarkan nama, NIS, atau kelas
+
+
+
+7.4 Modul Nilai
+
+ID
+
+Fitur
+
+Aktor
+
+Deskripsi
+
+NIL-01
+
+Input Nilai
+
+Guru
+
+Guru menginput nilai harian, UTS, UAS per mata pelajaran per siswa
+
+NIL-02
+
+Edit Nilai
+
+Guru
+
+Guru mengubah nilai yang sudah diinput
+
+NIL-03
+
+Lihat Rekap Nilai Kelas
+
+Guru/Admin
+
+Melihat rekap nilai seluruh siswa dalam satu kelas
+
+NIL-04
+
+Lihat Nilai Sendiri
+
+Siswa
+
+Siswa melihat nilai per mata pelajaran dan rekap rapor
+
+NIL-05
+
+Kalkulasi Nilai Akhir
+
+Sistem
+
+Sistem otomatis menghitung nilai akhir dari komponen nilai
+
+NIL-06
+
+Export Rekap Nilai
+
+Guru/Admin
+
+Export data nilai ke format yang dapat dicetak
+
+
+
+7.5 Modul Prestasi
+
+ID
+
+Fitur
+
+Aktor
+
+Deskripsi
+
+PRE-01
+
+Tambah Prestasi
+
+Guru
+
+Guru mencatat prestasi akademik/non-akademik siswa
+
+PRE-02
+
+Edit Prestasi
+
+Guru/Admin
+
+Mengubah data prestasi yang sudah dicatat
+
+PRE-03
+
+Hapus Prestasi
+
+Admin
+
+Menghapus data prestasi
+
+PRE-04
+
+Lihat Prestasi Siswa
+
+Semua
+
+Melihat riwayat prestasi siswa tertentu
+
+PRE-05
+
+Lihat Prestasi Sendiri
+
+Siswa
+
+Siswa melihat daftar prestasinya di dashboard
+
+
+
+7.6 Modul Kelas
+
+ID
+
+Fitur
+
+Aktor
+
+Deskripsi
+
+KLS-01
+
+Buat Kelas Baru
+
+Admin
+
+Admin membuat kelas dengan nama, tingkat, dan wali kelas
+
+KLS-02
+
+Assign Siswa ke Kelas
+
+Admin
+
+Memasukkan siswa ke kelas tertentu
+
+KLS-03
+
+Pembagian Kelas Otomatis
+
+Admin
+
+Sistem membagi siswa kelas 10 berdasarkan nilai tes masuk dan rapor SMP
+
+KLS-04
+
+Lihat Daftar Kelas
+
+Admin/Guru
+
+Melihat daftar semua kelas beserta wali kelas dan jumlah siswa
+
+KLS-05
+
+Lihat Siswa per Kelas
+
+Admin/Guru
+
+Melihat daftar siswa dalam satu kelas tertentu
+
+
+
+7.7 Modul Penjurusan (Kelas 11)
+
+ID
+
+Fitur
+
+Aktor
+
+Deskripsi
+
+JUR-01
+
+Input Pilihan Penjurusan
+
+Admin/Siswa
+
+Siswa atau admin memasukkan pilihan rumpun (A/B/C)
+
+JUR-02
+
+Penetapan Penjurusan
+
+Admin
+
+Admin menetapkan rumpun berdasarkan minat, bakat, dan nilai
+
+JUR-03
+
+Lihat Status Penjurusan
+
+Siswa
+
+Siswa melihat rumpun yang telah ditetapkan di dashboard
+
+JUR-04
+
+Rekap Penjurusan
+
+Admin
+
+Admin melihat rekapitulasi penjurusan seluruh siswa kelas 11
+
+
+
+7.8 Modul Alumni
+
+ID
+
+Fitur
+
+Aktor
+
+Deskripsi
+
+ALU-01
+
+Tambah Data Alumni
+
+Admin
+
+Admin menginput data alumni baru ke sistem
+
+ALU-02
+
+Edit Data Alumni
+
+Admin
+
+Admin mengubah data alumni yang sudah ada
+
+ALU-03
+
+Hapus Data Alumni
+
+Admin
+
+Admin menghapus data alumni
+
+ALU-04
+
+Lihat Daftar Alumni
+
+Admin/Publik
+
+Melihat daftar alumni dengan filter tahun lulus dan status
+
+ALU-05
+
+Detail Alumni
+
+Admin
+
+Melihat detail lengkap profil alumni termasuk prestasi
+
+ALU-06
+
+Tambah Prestasi Alumni
+
+Admin
+
+Mencatat pencapaian alumni setelah lulus
+
+
+
+7.9 Modul Chatbot AI
+
+ID
+
+Fitur
+
+Aktor
+
+Deskripsi
+
+CHT-01
+
+Chatbot Landing Page
+
+Publik
+
+Menjawab FAQ tentang pendaftaran, jadwal, info sekolah
+
+CHT-02
+
+Chatbot Siswa
+
+Siswa
+
+Menjawab pertanyaan tentang cara pakai SIAKAD, cek nilai, jadwal
+
+CHT-03
+
+Chatbot Admin/Guru
+
+Admin/Guru
+
+Menjawab FAQ operasional sistem: input nilai, kelola kelas, dll
+
+CHT-04
+
+Riwayat Chat
+
+Semua
+
+Pengguna dapat melihat riwayat percakapan chatbot dalam sesi aktif
+
+
+
+
+
+8. Detail Flow Sistem
+
+8.1 Flow Autentikasi Login
+
+Langkah
+
+Aktor
+
+Aksi
+
+Kondisi
+
+1
+
+Pengguna
+
+Mengakses halaman login
+
+-
+
+2
+
+Pengguna
+
+Memilih peran: Admin / Guru / Siswa
+
+-
+
+3
+
+Pengguna
+
+Mengisi kredensial (username/NIP/NISN + password)
+
+-
+
+4
+
+Sistem
+
+Validasi kredensial di Firebase Auth
+
+Jika gagal: tampilkan error
+
+5
+
+Sistem
+
+Cek status akun (aktif / menunggu / nonaktif)
+
+Jika bukan aktif: tampilkan pesan
+
+6
+
+Sistem
+
+Generate session token, simpan di localStorage
+
+-
+
+7
+
+Sistem
+
+Redirect ke dashboard sesuai peran
+
+Admin/Guru/Siswa
+
+
+
+8.2 Flow Input Nilai (Guru)
+
+Langkah
+
+Aktor
+
+Aksi
+
+1
+
+Guru
+
+Login ke sistem dengan NIP + password
+
+2
+
+Guru
+
+Pilih menu 'Input Nilai' di sidebar
+
+3
+
+Guru
+
+Pilih mata pelajaran, kelas, semester, dan tahun ajaran
+
+4
+
+Sistem
+
+Tampilkan daftar siswa di kelas yang dipilih
+
+5
+
+Guru
+
+Isi nilai harian, UTS, UAS untuk setiap siswa
+
+6
+
+Sistem
+
+Kalkulasi otomatis nilai akhir (formula: (NH*30% + UTS*30% + UAS*40%))
+
+7
+
+Guru
+
+Klik 'Simpan' untuk menyimpan semua nilai
+
+8
+
+Sistem
+
+Validasi data, simpan ke Firestore, tampilkan konfirmasi sukses
+
+
+
+8.3 Flow Pembagian Kelas (Kelas 10)
+
+Langkah
+
+Aktor
+
+Aksi
+
+1
+
+Admin
+
+Login ke sistem
+
+2
+
+Admin
+
+Pilih menu 'Pembagian Kelas' > 'Kelas 10'
+
+3
+
+Admin
+
+Input data nilai tes masuk dan nilai rapor SMP untuk setiap siswa baru
+
+4
+
+Sistem
+
+Urutkan siswa berdasarkan total skor (nilai tes + rapor SMP)
+
+5
+
+Admin
+
+Tentukan kapasitas per kelas dan jumlah kelas yang tersedia
+
+6
+
+Sistem
+
+Distribusi otomatis siswa ke kelas berdasarkan urutan skor
+
+7
+
+Admin
+
+Review hasil pembagian, lakukan penyesuaian manual jika diperlukan
+
+8
+
+Admin
+
+Konfirmasi dan simpan hasil pembagian kelas
+
+9
+
+Sistem
+
+Update field id_kelas pada data setiap siswa
+
+
+
+8.4 Flow Penjurusan (Kelas 11)
+
+Langkah
+
+Aktor
+
+Aksi
+
+1
+
+Admin
+
+Buka menu 'Penjurusan' > 'Kelas 11'
+
+2
+
+Admin
+
+Tampilkan daftar siswa kelas 10 yang naik ke kelas 11
+
+3
+
+Admin/Siswa
+
+Siswa mengisi form pilihan rumpun (A: Kesehatan / B: Teknik / C: Sosial)
+
+4
+
+Sistem
+
+Tampilkan rekap nilai akademik siswa sebagai referensi
+
+5
+
+Admin
+
+Review pilihan siswa dan nilai akademik
+
+6
+
+Admin
+
+Tetapkan rumpun untuk setiap siswa (dapat mengikuti pilihan atau menyesuaikan)
+
+7
+
+Sistem
+
+Simpan data penjurusan, update field jurusan pada data siswa
+
+8
+
+Siswa
+
+Dashboard siswa menampilkan rumpun yang telah ditetapkan
+
+
+
+8.5 Flow Pengelolaan Alumni
+
+Langkah
+
+Aktor
+
+Aksi
+
+1
+
+Admin
+
+Pilih menu 'Alumni' di sidebar
+
+2
+
+Admin
+
+Klik 'Tambah Alumni' untuk menambahkan data alumni baru
+
+3
+
+Admin
+
+Isi form: NIS, nama, tahun lulus, status (kuliah/kerja/lainnya)
+
+4
+
+Admin
+
+Isi data institusi: nama PT/perusahaan, jurusan/jabatan
+
+5
+
+Admin
+
+Isi kontak: email, no. telp, alamat domisili
+
+6
+
+Admin
+
+Tambahkan prestasi alumni jika ada (opsional)
+
+7
+
+Admin
+
+Simpan data, sistem menyimpan ke Firestore
+
+8
+
+Admin
+
+Data alumni tampil di tabel daftar alumni dengan fitur filter dan cari
+
+
+
+
+
+9. Struktur Menu Sistem
+
+9.1 Landing Page (Publik - Tanpa Login)
+
+Menu / Section
+
+Deskripsi Konten
+
+Beranda (Hero)
+
+Banner selamat datang, tagline sekolah, tombol Login
+
+Profil Sekolah
+
+Sejarah, visi misi, akreditasi, prestasi sekolah
+
+Kalender Akademik
+
+Jadwal kegiatan sekolah, hari libur, ujian
+
+Kontak Admin
+
+Nama admin, email, no. telp, jam operasional
+
+Daftar Guru
+
+Nama guru, jabatan, foto, email/kontak yang ditampilkan
+
+Chatbot AI
+
+Widget chatbot pojok kanan bawah untuk FAQ publik
+
+Login
+
+Tombol/link ke halaman login sistem
+
+
+
+9.2 Dashboard Admin
+
+Menu Utama
+
+Sub Menu
+
+Fungsi
+
+Dashboard
+
+-
+
+Ringkasan statistik: total siswa, guru, kelas, alumni aktif
+
+Manajemen Pengguna
+
+Daftar Guru
+
+CRUD data guru, kelola status akun
+
+Manajemen Pengguna
+
+Daftar Siswa
+
+CRUD data siswa, assign kelas
+
+Manajemen Pengguna
+
+Persetujuan Akun
+
+Approve/reject akun baru yang pending
+
+Manajemen Kelas
+
+Daftar Kelas
+
+CRUD kelas, assign wali kelas
+
+Manajemen Kelas
+
+Pembagian Kelas
+
+Proses pembagian kelas 10 otomatis
+
+Penjurusan
+
+Input Penjurusan
+
+Penetapan rumpun untuk siswa kelas 11
+
+Penjurusan
+
+Rekap Penjurusan
+
+Lihat hasil penjurusan per tahun ajaran
+
+Alumni
+
+Daftar Alumni
+
+CRUD data alumni
+
+Alumni
+
+Prestasi Alumni
+
+Kelola pencapaian alumni
+
+Nilai
+
+Rekap Nilai
+
+Lihat nilai seluruh kelas dan mata pelajaran
+
+Laporan
+
+Export Data
+
+Export data siswa, nilai, alumni ke format cetak
+
+Chatbot
+
+-
+
+Widget chatbot untuk pertanyaan operasional admin
+
+Pengaturan
+
+Profil Admin
+
+Ubah data dan password akun admin
+
+
+
+9.3 Dashboard Guru
+
+Menu Utama
+
+Sub Menu
+
+Fungsi
+
+Dashboard
+
+-
+
+Rekap kelas yang diajar, jumlah siswa, aktivitas terkini
+
+Input Nilai
+
+Input Nilai Baru
+
+Form input nilai per kelas, mapel, semester
+
+Input Nilai
+
+Edit Nilai
+
+Ubah nilai yang sudah diinput
+
+Input Nilai
+
+Rekap Nilai
+
+Lihat dan export rekap nilai kelas
+
+Prestasi Siswa
+
+Tambah Prestasi
+
+Form pencatatan prestasi akademik/non-akademik
+
+Prestasi Siswa
+
+Daftar Prestasi
+
+Lihat semua prestasi yang pernah dicatat
+
+Data Siswa
+
+Daftar Siswa
+
+Lihat profil siswa di kelas yang diajar
+
+Chatbot
+
+-
+
+Widget chatbot untuk FAQ penggunaan sistem
+
+Profil
+
+-
+
+Lihat dan edit data profil guru
+
+
+
+9.4 Dashboard Siswa
+
+Menu Utama
+
+Sub Menu
+
+Fungsi
+
+Dashboard / Beranda
+
+-
+
+Ringkasan: kelas, jurusan, nilai terbaru, prestasi terbaru
+
+Profil Saya
+
+-
+
+Lihat data diri: NIS, nama, TTL, kelas, jurusan, kontak
+
+Nilai & Rapor
+
+Nilai per Semester
+
+Lihat nilai per mata pelajaran per semester
+
+Nilai & Rapor
+
+Rekap Rapor
+
+Lihat ringkasan nilai seluruh semester
+
+Jadwal
+
+-
+
+Jadwal pelajaran mingguan dan jadwal ujian
+
+Penjurusan
+
+-
+
+Status penjurusan (rumpun yang ditetapkan, dasar penetapan)
+
+Prestasi
+
+-
+
+Daftar prestasi akademik dan non-akademik yang tercatat
+
+Chatbot
+
+-
+
+Widget chatbot untuk FAQ penggunaan sistem dan info sekolah
+
+Kontak Admin
+
+-
+
+Informasi kontak admin dan guru yang dapat dihubungi
+
+
+
+
+
+10. Kebutuhan Non Fungsional
+
+Kategori
+
+Kebutuhan
+
+Indikator
+
+Usability
+
+Antarmuka intuitif untuk semua pengguna termasuk guru non-teknis
+
+Skor SUS > 70, onboarding < 10 menit
+
+Reliability
+
+Sistem berjalan stabil, meminimalkan downtime
+
+Uptime > 99%, error rate < 1%
+
+Security
+
+Autentikasi per peran, data hanya bisa diakses oleh pihak berwenang
+
+Firebase Auth + Firestore Security Rules
+
+Accessibility
+
+Dapat diakses di semua perangkat modern tanpa instalasi
+
+Responsif di desktop, tablet, mobile
+
+Performance
+
+Respons cepat saat load dashboard, input nilai, chatbot
+
+Load time < 3 detik, chatbot < 3 detik
+
+Scalability
+
+Mampu menampung pertumbuhan data jangka panjang
+
+Firebase Firestore auto-scaling
+
+Maintainability
+
+Kode terstruktur dan mudah dikembangkan
+
+Dokumentasi teknis tersedia
+
+
+
+
+
+11. Teknologi & Arsitektur
+
+Komponen
+
+Teknologi
+
+Keterangan
+
+Frontend
+
+React.js / Next.js
+
+Framework web modern, responsif
+
+Backend/API
+
+Firebase Functions
+
+Serverless functions untuk logika bisnis
+
+Database
+
+Firebase Firestore
+
+NoSQL cloud database, real-time
+
+Autentikasi
+
+Firebase Authentication
+
+Multi-provider auth dengan role management
+
+AI Chatbot
+
+Anthropic Claude API / Gemini
+
+LLM untuk chatbot FAQ sistem
+
+Hosting
+
+Firebase Hosting / Vercel
+
+CDN global, HTTPS otomatis
+
+Desain UI
+
+Figma
+
+Prototyping dan design system
+
+Manajemen Proyek
+
+Agile + Prototyping
+
+Sprint mingguan dengan evaluasi berkala
+
+
+
+12. Risiko & Mitigasi
+
+Risiko
+
+Tingkat
+
+Mitigasi
+
+Data hilang atau corrupt di Firebase
+
+Sedang
+
+Backup berkala, Firestore security rules ketat
+
+Chatbot memberikan jawaban tidak akurat
+
+Rendah
+
+Batasi scope chatbot ke FAQ terstruktur, tambahkan fallback ke kontak admin
+
+Guru kesulitan menggunakan sistem
+
+Sedang
+
+Sediakan panduan penggunaan (user guide), UI yang sederhana
+
+Overload pengguna saat ujian serentak
+
+Rendah
+
+Firebase auto-scaling menangani lonjakan traffic
+
+Scope creep menghambat jadwal
+
+Sedang
+
+Patuhi scope yang sudah didefinisikan, fitur tambahan masuk backlog
+
+
+
+13. Timeline Pengembangan
+
+Sprint / Minggu
+
+Deliverable Utama
+
+Sprint 1
+
+Setup project, Firebase config, autentikasi login 3 peran
+
+Sprint 2
+
+CRUD data siswa, guru, kelas; dashboard admin dasar
+
+Sprint 3
+
+Modul input nilai guru, kalkulasi nilai akhir otomatis
+
+Sprint 4
+
+Pembagian kelas otomatis kelas 10, modul penjurusan kelas 11
+
+Sprint 5
+
+Modul alumni, prestasi siswa, dashboard siswa lengkap
+
+Sprint 6
+
+Landing page publik, integrasi chatbot AI
+
+Sprint 7
+
+Testing menyeluruh, bug fixing, optimasi performa
+
+Sprint 8
+
+Finalisasi, deployment, penyerahan hasil proyek
+
+
+
+14. Spesifikasi Chatbot AI
+
+14.1 Scope FAQ Chatbot
+
+Chatbot dirancang untuk menjawab pertanyaan yang bersifat informatif seputar sistem SIAKAD dan informasi umum sekolah. Chatbot TIDAK menangani operasi yang mengubah data (input nilai, edit profil, dll.).
+
+
+
+14.2 Contoh FAQ Chatbot
+
+Konteks
+
+Contoh Pertanyaan
+
+Tipe Jawaban
+
+Landing Page
+
+Bagaimana cara mendaftar ke sekolah ini?
+
+Info prosedur pendaftaran
+
+Landing Page
+
+Kapan tahun ajaran baru dimulai?
+
+Info kalender akademik
+
+Landing Page
+
+Siapa yang bisa saya hubungi untuk informasi lebih lanjut?
+
+Kontak admin/guru
+
+Siswa
+
+Bagaimana cara cek nilai saya?
+
+Panduan navigasi menu nilai
+
+Siswa
+
+Di mana saya bisa lihat jadwal pelajaran?
+
+Panduan navigasi menu jadwal
+
+Siswa
+
+Apa itu Rumpun A, B, dan C?
+
+Info penjurusan
+
+Guru
+
+Bagaimana cara input nilai siswa?
+
+Panduan step-by-step input nilai
+
+Guru
+
+Bagaimana cara mencatat prestasi siswa?
+
+Panduan menu prestasi
+
+Admin
+
+Bagaimana cara approve akun baru?
+
+Panduan menu persetujuan akun
+
+Admin
+
+Bagaimana cara membagi kelas kelas 10?
+
+Panduan menu pembagian kelas
+
+
+
+14.3 Fallback Chatbot
+
+Jika pertanyaan di luar scope FAQ, chatbot memberikan respons: 'Maaf, saya belum memiliki informasi mengenai itu. Silakan hubungi admin sekolah di [kontak admin].' Chatbot juga menyediakan tombol 'Hubungi Admin' sebagai shortcut.
+
+
+
+
+
+--- Akhir Dokumen PRD SIAKAD SMA | Kelompok 3 | Universitas Negeri Surabaya ---
+

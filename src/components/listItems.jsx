@@ -8,7 +8,7 @@ import BarChartIcon from '@mui/icons-material/BarChart';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
-export const mainListItems = (
+export const MainListItems = ({ role }) => (
   <React.Fragment>
     <ListItemButton component={Link} to="/">
       <ListItemIcon>
@@ -16,30 +16,49 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Dashboard" />
     </ListItemButton>
-    <ListItemButton component={Link} to="/students">
-      <ListItemIcon>
-        <PeopleIcon />
-      </ListItemIcon>
-      <ListItemText primary="Students" />
-    </ListItemButton>
-    <ListItemButton component={Link} to="/teachers">
-      <ListItemIcon>
-        <SchoolIcon />
-      </ListItemIcon>
-      <ListItemText primary="Teachers" />
-    </ListItemButton>
-    <ListItemButton component={Link} to="/grades">
-      <ListItemIcon>
-        <BarChartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Grades" />
-    </ListItemButton>
+    
+    {role === 'admin' && (
+      <>
+        <ListItemButton component={Link} to="/students">
+          <ListItemIcon>
+            <PeopleIcon />
+          </ListItemIcon>
+          <ListItemText primary="Manage Students" />
+        </ListItemButton>
+        <ListItemButton component={Link} to="/teachers">
+          <ListItemIcon>
+            <SchoolIcon />
+          </ListItemIcon>
+          <ListItemText primary="Manage Teachers" />
+        </ListItemButton>
+      </>
+    )}
+
+    {(role === 'admin' || role === 'guru') && (
+      <ListItemButton component={Link} to="/grades">
+        <ListItemIcon>
+          <BarChartIcon />
+        </ListItemIcon>
+        <ListItemText primary="Manage Grades" />
+      </ListItemButton>
+    )}
+
+    {role === 'siswa' && (
+      <ListItemButton component={Link} to="/grades">
+        <ListItemIcon>
+          <BarChartIcon />
+        </ListItemIcon>
+        <ListItemText primary="My Grades" />
+      </ListItemButton>
+    )}
+
     <ListItemButton component={Link} to="/schedule">
       <ListItemIcon>
         <CalendarTodayIcon />
       </ListItemIcon>
       <ListItemText primary="Schedule" />
     </ListItemButton>
+    
     <ListItemButton component={Link} to="/profile">
       <ListItemIcon>
         <AccountCircleIcon />
