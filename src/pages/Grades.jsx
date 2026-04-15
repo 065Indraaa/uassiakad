@@ -32,7 +32,7 @@ const Grades = () => {
     getGrades();
     getStudents();
     getTeachers();
-  }, []);
+  }, [gradesCollectionRef, studentsCollectionRef, teachersCollectionRef]);
 
   const handleClickOpen = (grade) => {
     if (grade) {
@@ -52,7 +52,8 @@ const Grades = () => {
   const handleSave = async () => {
     if (isEditing) {
       const gradeDoc = doc(db, 'grades', currentGrade.id);
-      const { id, ...gradeData } = currentGrade;
+      const gradeData = { ...currentGrade };
+      delete gradeData.id;
       await updateDoc(gradeDoc, gradeData);
     } else {
       await addDoc(gradesCollectionRef, currentGrade);

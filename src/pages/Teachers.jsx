@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from 'firebase/firestore';
-import { db, auth } from '../firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { db, auth } from '../firebase';
 import Layout from '../components/Layout';
 import { Paper, Table, TableBody, TableCell, TableHead, TableRow, Button, Dialog, DialogTitle, DialogContent, TextField, DialogActions } from '@mui/material';
 
 const Teachers = () => {
   const [teachers, setTeachers] = useState([]);
   const [open, setOpen] = useState(false);
-  const [currentTeacher, setCurrentTeacher] = useState({ name: '', subject: '', email: '' });
+  const [currentTeacher, setCurrentTeacher] = useState({ name: '', email: '', password: '' });
   const [isEditing, setIsEditing] = useState(false);
 
   const teachersCollectionRef = collection(db, 'teachers');
@@ -19,7 +19,7 @@ const Teachers = () => {
       setTeachers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
     getTeachers();
-  }, []);
+  }, [teachersCollectionRef]);
 
   const handleClickOpen = (teacher) => {
     if (teacher) {
@@ -27,7 +27,7 @@ const Teachers = () => {
       setCurrentTeacher(teacher);
     } else {
       setIsEditing(false);
-      setCurrentTeacher({ name: '', subject: '', email: '' });
+      setCurrentTeacher({ name: '', email: '', password: '' });
     }
     setOpen(true);
   };
@@ -39,17 +39,12 @@ const Teachers = () => {
   const handleSave = async () => {
     if (isEditing) {
       const teacherDoc = doc(db, 'teachers', currentTeacher.id);
-      const { id, ...teacherData } = currentTeacher;
+      const teacherData = { ...currentTeacher };
+      delete teacherData.id;
       await updateDoc(teacherDoc, teacherData);
     } else {
-      // Create user in Firebase Auth
-      try {
-        await createUserWithEmailAndPassword(auth, currentTeacher.email, 'password123'); // Default password
-      } catch (error) {
-        console.error("Error creating user:", error);
-        // Handle error (e.g., show a message to the user)
-      }
-      await addDoc(teachersCollectionRef, currentTeacher);
+      await addDoc(teachersCollectionRef, { name: currentTeacher.name, email: currentTeacher.email });
+      await createUserWithEmailAndPassword(auth, currentTeacher.email, currentTeacher.password);
     }
     handleClose();
     const data = await getDocs(teachersCollectionRef);
@@ -70,7 +65,6 @@ const Teachers = () => {
           <TableHead>
             <TableRow>
               <TableCell>Name</TableCell>
-              <TableCell>Subject</TableCell>
               <TableCell>Email</TableCell>
               <TableCell align="right">Actions</TableCell>
             </TableRow>
@@ -79,7 +73,6 @@ const Teachers = () => {
             {teachers.map((teacher) => (
               <TableRow key={teacher.id}>
                 <TableCell>{teacher.name}</TableCell>
-                <TableCell>{teacher.subject}</TableCell>
                 <TableCell>{teacher.email}</TableCell>
                 <TableCell align="right">
                   <Button onClick={() => handleClickOpen(teacher)} sx={{ mr: 1 }}>Edit</Button>
@@ -93,8 +86,8 @@ const Teachers = () => {
           <DialogTitle>{isEditing ? 'Edit Teacher' : 'Add Teacher'}</DialogTitle>
           <DialogContent>
             <TextField autoFocus margin="dense" label="Name" type="text" fullWidth value={currentTeacher.name} onChange={(e) => setCurrentTeacher({ ...currentTeacher, name: e.target.value })} />
-            <TextField margin="dense" label="Subject" type="text" fullWidth value={currentTeacher.subject} onChange={(e) => setCurrentTeacher({ ...currentTeacher, subject: e.target.value })} />
-            <TextField margin="dense" label="Email" type="email" fullWidth value={currentTeacher.email} onChange={(e) => setCurrentTeacher({ ...currentTeacher, email: e.target.value })} />
+            <TextField margin="dense" label="Email Address" type="email" fullWidth value={currentTeacher.email} onChange={(e) => setCurrentTeacher({ ...currentTeacher, email: e.target.value })} />
+            {!isEditing && <TextField margin="dense" label="Password" type="password" fullWidth value={currentTeacher.password} onChange={(e) => setCurrentTeacher({ ...currentTeacher, password: e.target.value })} />}
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose}>Cancel</Button>
